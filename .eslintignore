@@ -1,0 +1,7 @@
+.dumi
+.husky
+.dumirc.ts
+dist
+docs-dist
+coverage
+node_modules

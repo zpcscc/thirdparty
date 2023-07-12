@@ -1,0 +1,24 @@
+{
+  "extends": "@dxsixpc/configs/tsconfig/tsconfig.react.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "docs/": ["docs"],
+      "docs/*": ["docs/*"],
+      "src": ["src"],
+      "src/*": ["src/*"],
+      "@dxsixpc/thirdparty": ["src"],
+      "@dxsixpc/thirdparty/*": ["src/*"]
+    }
+  },
+  "include": [
+    ".dumi/**/*",
+    ".dumirc.ts",
+    "src/**/*",
+    "docs/**/*",
+    ".eslintrc.js",
+    "babel.config.js"
+  ]
+}

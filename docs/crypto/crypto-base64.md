@@ -1,6 +1,4 @@
 ---
-group:
-  title: crypto
 title: cryptoBase64
 ---
 
@@ -8,7 +6,7 @@ title: cryptoBase64
 
 ## 在线演示
 
-<code src="./crypto/cryptoBase64"></code>
+<code src="./cryptoBase64"></code>
 
 ## API
 

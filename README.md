@@ -1,13 +1,13 @@
-# @dxsixpc/thirdparty
+# @zpcscc/thirdparty
 
-[![NPM version](https://img.shields.io/npm/v/@dxsixpc/thirdparty.svg?style=flat)](https://npmjs.org/package/@dxsixpc/thirdparty)
-[![NPM downloads](http://img.shields.io/npm/dm/@dxsixpc/thirdparty.svg?style=flat)](https://npmjs.org/package/@dxsixpc/thirdparty)
+[![NPM version](https://img.shields.io/npm/v/@zpcscc/thirdparty.svg?style=flat)](https://npmjs.org/package/@zpcscc/thirdparty)
+[![NPM downloads](http://img.shields.io/npm/dm/@zpcscc/thirdparty.svg?style=flat)](https://npmjs.org/package/@zpcscc/thirdparty)
 
 用于对一些第三方库进行二次封装和调整
 
 ## 使用
 
-https://dxsixpc.github.io/thirdparty
+https://zpcscc.github.io/thirdparty
 
 ## 开发
 

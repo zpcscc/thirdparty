@@ -1,7 +1,7 @@
 ---
-group:
-  title: axios
-  order: 1
+nav:
+  title: 请求
+  order: 2
 title: request
 ---
 
@@ -10,7 +10,7 @@ title: request
 拦截了 error，对 error 的数据做了处理。用于统一全局请求报错。
 
 ```js
-import { request } from '@dxsixpc/utils';
+import { request } from '@zpcscc/thirdparty';
 
 interface ErrorMessageType {
   error: AxiosError;

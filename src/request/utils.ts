@@ -1,4 +1,4 @@
-import { dataToString } from '@dxsixpc/utils';
+import { toString } from '@zpcscc/utils';
 import type { AxiosError } from 'axios';
 import type { ErrorMessageType } from './type';
 
@@ -20,7 +20,7 @@ export const codeMessage: CodeMessageType = {
   500: '服务器发生错误，请检查服务器。',
   502: '网关错误。',
   503: '服务不可用，服务器暂时过载或维护。',
-  504: '网关超时。',
+  504: '网关超时。'
 };
 
 // 获取对应的报错信息
@@ -30,8 +30,8 @@ export const getErrorMsg = (error: AxiosError): ErrorMessageType => {
     error,
     status,
     response: error?.response,
-    message: dataToString(error?.response?.data),
+    message: toString(error?.response?.data),
     codeMessage: codeMessage[status],
-    statusText: error?.response?.statusText,
+    statusText: error?.response?.statusText
   };
 };

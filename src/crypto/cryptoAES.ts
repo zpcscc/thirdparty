@@ -1,4 +1,4 @@
-import { dataToString, stringToData } from '@dxsixpc/utils';
+import { toData, toString } from '@zpcscc/utils';
 import { AES, enc, mode, pad } from 'crypto-js';
 import type { AESConfigType } from './type';
 
@@ -10,7 +10,7 @@ const keyHandler = (key: string) => `${key}`.slice(0, 16).padEnd(16);
 const defaultCfg: AESConfigType = {
   iv: '0000000000000000',
   mode: 'CBC',
-  padding: 'Pkcs7',
+  padding: 'Pkcs7'
 };
 
 // 处理配置
@@ -19,7 +19,7 @@ const formatCfg = (aesCfg?: AESConfigType) => {
   return {
     iv: Utf8.parse(keyHandler(config.iv)),
     mode: mode[config.mode],
-    padding: pad[config.padding],
+    padding: pad[config.padding]
   };
 };
 
@@ -31,7 +31,7 @@ const formatCfg = (aesCfg?: AESConfigType) => {
  * @returns {string} 加密后的数据
  */
 const encrypt = (data: any, key: string, AEScfg?: AESConfigType): string => {
-  const dataStr = dataToString(data);
+  const dataStr = toString(data);
   const utf8Data = Utf8.parse(dataStr);
   const utf8Key = Utf8.parse(keyHandler(key));
   const config = formatCfg(AEScfg);
@@ -52,7 +52,7 @@ const decrypt = (data: string, key: string, AEScfg?: AESConfigType): any => {
   const config = formatCfg(AEScfg);
   const decryptedDS = AES.decrypt(base64Data, utf8Key, config);
   const decryptedStr = decryptedDS.toString(Utf8);
-  return stringToData(decryptedStr);
+  return toData(decryptedStr);
 };
 
 const cryptoAES = { encrypt, decrypt };

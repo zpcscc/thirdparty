@@ -1,5 +1,5 @@
 {
-  "extends": "@dxsixpc/configs/tsconfig/tsconfig.react.json",
+  "extends": "@zpcscc/configs/tsconfig/tsconfig.react.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
@@ -9,16 +9,9 @@
       "docs/*": ["docs/*"],
       "src": ["src"],
       "src/*": ["src/*"],
-      "@dxsixpc/thirdparty": ["src"],
-      "@dxsixpc/thirdparty/*": ["src/*"]
+      "@zpcscc/thirdparty": ["src"],
+      "@zpcscc/thirdparty/*": ["src/*"]
     }
   },
-  "include": [
-    ".dumi/**/*",
-    ".dumirc.ts",
-    "src/**/*",
-    "docs/**/*",
-    ".eslintrc.js",
-    "babel.config.js"
-  ]
+  "include": [".dumirc.ts", "src/**/*", "docs/**/*", ".eslintrc.js", "babel.config.js"]
 }

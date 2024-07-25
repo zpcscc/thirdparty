@@ -1,6 +1,6 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { cryptoBase64 } from '@dxsixpc/thirdparty';
-import { dataToString } from '@dxsixpc/utils';
+import { cryptoBase64 } from '@zpcscc/thirdparty';
+import { toString } from '@zpcscc/utils';
 import { Button, Input, Space } from 'antd';
 import { useState, type FC } from 'react';
 
@@ -21,8 +21,9 @@ const Base64: FC = () => {
   return (
     <Space wrap>
       <Input.TextArea
-        style={{ width: '300px', height: '200px' }}
-        value={dataToString(encryptValue)}
+        rows={5}
+        style={{ width: '300px' }}
+        value={toString(encryptValue)}
         onChange={(e) => setEncryptValue(e.target.value)}
       />
       <Space direction='vertical'>
@@ -34,8 +35,9 @@ const Base64: FC = () => {
         </Button>
       </Space>
       <Input.TextArea
-        style={{ width: '300px', height: '200px' }}
-        value={dataToString(decryptValue)}
+        rows={5}
+        style={{ width: '300px' }}
+        value={toString(decryptValue)}
         onChange={(e) => setDecryptValue(e.target.value)}
       />
     </Space>

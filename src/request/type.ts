@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import type { codeMessage } from './utils';
 
-export interface ErrorMessageType {
+export type ErrorMessageType = {
   error: AxiosError;
   // 默认返回信息
   response?: AxiosResponse<any>;
@@ -13,4 +13,4 @@ export interface ErrorMessageType {
   codeMessage: string;
   // 系统默认状态码提示
   statusText?: string;
-}
+};

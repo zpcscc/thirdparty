@@ -1,4 +1,4 @@
-import { dataToString, stringToData } from '@dxsixpc/utils';
+import { toData, toString } from '@zpcscc/utils';
 import Base64 from 'crypto-js/enc-base64';
 import Utf8 from 'crypto-js/enc-utf8';
 
@@ -8,7 +8,7 @@ import Utf8 from 'crypto-js/enc-utf8';
  * @returns {string} 加密后的数据
  */
 const encrypt = (data: any): string => {
-  const dataStr = dataToString(data);
+  const dataStr = toString(data);
   return Base64.stringify(Utf8.parse(dataStr));
 };
 
@@ -24,7 +24,7 @@ const decrypt = (base64: string): string => {
   } catch {
     decryptValue = '格式错误';
   }
-  return stringToData(decryptValue);
+  return toData(decryptValue);
 };
 
 const cryptoBase64 = { encrypt, decrypt };

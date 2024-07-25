@@ -1,6 +1,6 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { cryptoAES, type AESConfigType } from '@dxsixpc/thirdparty';
-import { dataToString } from '@dxsixpc/utils';
+import { cryptoAES, type AESConfigType } from '@zpcscc/thirdparty';
+import { toString } from '@zpcscc/utils';
 import { Button, Input, Radio, Space } from 'antd';
 import { useState, type FC } from 'react';
 
@@ -59,7 +59,7 @@ const AES: FC = () => {
               { label: 'CTR', value: 'CTR' },
               { label: 'CTRGladman', value: 'CTRGladman' },
               { label: 'ECB', value: 'ECB' },
-              { label: 'OFB', value: 'OFB' },
+              { label: 'OFB', value: 'OFB' }
             ]}
             onChange={({ target: { value } }) => setMode(value)}
             value={mode}
@@ -76,7 +76,7 @@ const AES: FC = () => {
               { label: 'Iso10126', value: 'Iso10126' },
               { label: 'Iso97971', value: 'Iso97971' },
               { label: 'NoPadding', value: 'NoPadding' },
-              { label: 'ZeroPadding', value: 'ZeroPadding' },
+              { label: 'ZeroPadding', value: 'ZeroPadding' }
             ]}
             onChange={({ target: { value } }) => setPadding(value)}
             value={padding}
@@ -87,8 +87,9 @@ const AES: FC = () => {
       </Space>
       <Space wrap>
         <Input.TextArea
-          style={{ width: '300px', height: '200px' }}
-          value={dataToString(encryptValue)}
+          rows={5}
+          style={{ width: '300px' }}
+          value={toString(encryptValue)}
           onChange={({ target: { value } }) => setEncryptValue(value)}
         />
         <Space direction='vertical'>
@@ -100,8 +101,9 @@ const AES: FC = () => {
           </Button>
         </Space>
         <Input.TextArea
-          style={{ width: '300px', height: '200px' }}
-          value={dataToString(decryptValue)}
+          rows={5}
+          style={{ width: '300px' }}
+          value={toString(decryptValue)}
           onChange={({ target: { value } }) => setDecryptValue(value)}
         />
       </Space>

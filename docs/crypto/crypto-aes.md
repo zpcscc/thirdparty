@@ -1,7 +1,7 @@
 ---
-group:
-  title: crypto
-  order: 0
+nav:
+  title: 加密
+  order: 1
 title: cryptoAES
 ---
 
@@ -9,7 +9,7 @@ title: cryptoAES
 
 ## 在线演示
 
-<code src="./crypto/cryptoAES"></code>
+<code src="./cryptoAES"></code>
 
 ## API
 

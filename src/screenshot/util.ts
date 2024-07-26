@@ -86,7 +86,6 @@ const getNodeHeight = (node: HTMLElement) => {
 export const getImageSize = (targetNode: HTMLElement, options: Options = {}) => {
   const width = options.width || getNodeWidth(targetNode);
   const height = options.height || getNodeHeight(targetNode);
-
   return { width, height };
 };
 
@@ -96,8 +95,8 @@ export const getPixelRatio = () => {
   let FINAL_PROCESS;
   try {
     FINAL_PROCESS = process;
-  } catch {
-    // pass
+  } catch (error) {
+    console.error(error);
   }
 
   const val = FINAL_PROCESS && FINAL_PROCESS.env ? FINAL_PROCESS.env.devicePixelRatio : null;

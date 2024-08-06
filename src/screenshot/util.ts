@@ -1,4 +1,5 @@
 import type { Options } from './types';
+import isApple from './utils/isApple';
 
 export const resolveUrl = (url: string, baseUrl: string | null): string => {
   // url is absolute already
@@ -153,6 +154,7 @@ export const createImage = (url: string): Promise<HTMLImageElement> => {
 export const svgToDataURL = async (svg: SVGElement): Promise<string> => {
   const svgUrl = await Promise.resolve()
     .then(() => new XMLSerializer().serializeToString(svg))
+    .then(svgImgToWebP)
     .then(encodeURIComponent)
     .then((html) => `data:image/svg+xml;charset=utf-8,${html}`);
   return svgUrl;
@@ -181,4 +183,64 @@ export const nodeToSvg = (node: HTMLElement, width: number, height: number): SVG
 export const shouldEmbed = (url: string): boolean => {
   const URL_REGEX = /url\((["']?)([^"']+?)\1\)/g;
   return url.search(URL_REGEX) !== -1;
+};
+
+export const svgImgToWebP = (svgStr: string) => {
+  return new Promise<string>((resolve) => {
+    if (isApple()) {
+      let svgData = svgStr ?? '';
+      const base64Regex = /data:image\/(png|jpeg);base64,([\d+/=A-Za-z]+)/g;
+      let match: RegExpExecArray | null;
+      const promises: Promise<void>[] = [];
+
+      while ((match = base64Regex.exec(svgData)) !== null) {
+        if (match) {
+          const mimeType = match[1];
+          const base64Data = match[2];
+          promises.push(
+            convertToWebP(base64Data, mimeType, match).then(({ webpDataUrl, matchArr }) => {
+              svgData = svgData.replace(matchArr?.[0], webpDataUrl);
+            })
+          );
+        }
+      }
+
+      Promise.all(promises).then(() => {
+        resolve(svgData);
+      });
+    } else {
+      resolve(svgStr);
+    }
+  });
+};
+
+const convertToWebP = (base64Data: string, mimeType: string, matchArr: any[]) => {
+  return new Promise<{ webpDataUrl: string; matchArr: any[] }>((resolve, reject) => {
+    const img = new Image();
+    img.src = `data:image/${mimeType};base64,${base64Data}`;
+    img.addEventListener('load', () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx?.drawImage(img, 0, 0);
+
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            const reader = new FileReader();
+            reader.onloadend = function () {
+              resolve({ webpDataUrl: reader.result as string, matchArr });
+            };
+            reader.addEventListener('error', reject);
+            reader.readAsDataURL(blob);
+          }
+        },
+        'image/webp',
+        0.75 // 这里的质量参数可以调整
+      );
+    });
+
+    img.addEventListener('error', reject);
+  });
 };

@@ -22,8 +22,8 @@ export const toSvg = async <T extends HTMLElement>(
   options: Options = {}
 ): Promise<string> => {
   const svg = await toSvgNode(node, options);
-  const datauri = await svgToDataURL(svg);
-  return datauri;
+  const dataurl = await svgToDataURL(svg);
+  return dataurl;
 };
 
 export default toSvg;

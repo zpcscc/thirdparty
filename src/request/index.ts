@@ -1,3 +1,3 @@
 export { default as request } from './request';
-export * from './type';
-export * from './utils';
+export type { ErrorMessageType } from './type.ts';
+export { getErrorMsg } from './utils';

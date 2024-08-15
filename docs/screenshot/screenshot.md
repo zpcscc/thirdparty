@@ -1,15 +1,11 @@
 ---
-nav:
-  title: 截屏
-  order: 0
-title: 截屏
+title: 自由截屏工具
 ---
 
 # 截屏
 
-基于<a href="https://github.com/bubkoo/html-to-image" target="_blank">html-to-image</a> 修改后的截屏库；
-融合了<a href="https://github.com/qq15725/modern-screenshot" target="_blank">modern-screenshot</a>的部分代码，用于处理ios下，截屏偶尔空白的问题。
+基于<a href="https://github.com/likaia/js-screen-shot" target="_blank">js-screen-shot</a> 将内置截屏库，从html2canvas替换为了html-to-image，修改后的多功能截屏工具；
 
 ## 在线演示
 
-<code src="./html-to-image"></code>
+<code src="./screenshot"></code>

@@ -218,7 +218,7 @@ export const cloneNode = async <T extends HTMLElement>(
   options: Options,
   isRoot?: boolean
 ): Promise<T | null> => {
-  if (!isRoot && options.filter && !options.filter(node)) {
+  if ((!isRoot && options.filter && !options.filter(node)) || !node) {
     return null;
   }
 

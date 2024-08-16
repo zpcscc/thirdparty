@@ -26,6 +26,9 @@ export const isInstanceOfElement = <
   if (nodePrototype === null) return false;
 
   return (
-    nodePrototype.constructor.name === instance.name || isInstanceOfElement(nodePrototype, instance)
+    (nodePrototype.constructor.name &&
+      instance.name &&
+      nodePrototype.constructor.name === instance.name) ||
+    isInstanceOfElement(nodePrototype, instance)
   );
 };

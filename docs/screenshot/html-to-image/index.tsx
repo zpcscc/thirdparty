@@ -3,7 +3,7 @@ import { Button, Image, Space } from 'antd';
 import { useState, type FC } from 'react';
 
 // 截屏
-const Screenshot: FC = () => {
+const App: FC = () => {
   const [imgSrc, setImgSrc] = useState<string>('https://zpcscc.top/img/logo.png');
 
   // 截屏
@@ -26,4 +26,4 @@ const Screenshot: FC = () => {
   );
 };
 
-export default Screenshot;
+export default App;

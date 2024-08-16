@@ -91,15 +91,14 @@ export const getImageSize = (targetNode: HTMLElement, options: Options = {}) => 
 };
 
 export const getPixelRatio = () => {
-  let ratio;
+  let ratio: number;
 
-  let FINAL_PROCESS;
+  let FINAL_PROCESS: NodeJS.Process;
   try {
     FINAL_PROCESS = process;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch {}
 
+  // @ts-expect-error
   const val = FINAL_PROCESS && FINAL_PROCESS.env ? FINAL_PROCESS.env.devicePixelRatio : null;
   if (val) {
     ratio = Number.parseInt(val, 10);
@@ -107,6 +106,7 @@ export const getPixelRatio = () => {
       ratio = 1;
     }
   }
+  // @ts-expect-error
   return ratio || window.devicePixelRatio || 1;
 };
 
